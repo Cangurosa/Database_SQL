@@ -21,7 +21,7 @@ public class menu {
             switch(scelta){
                 case 1 -> addValue();
                 case 2 -> DataBase.ShowValues();
-                case 3 -> DataBase.DeleteValues();
+                case 3 -> deleteValue();
                 case 4 -> running = false;
             }
         }
@@ -40,5 +40,13 @@ public class menu {
             String data = input.nextLine();
 
             DataBase.insertValues(cat, imp, data);
+        }
+
+        public static void deleteValue()
+        {
+            DataBase.ShowValues();
+            System.out.println("Quale riga vuoi eliminare? ");
+            int id = input.nextInt();
+            DataBase.DeleteValues(id);
         }
 }

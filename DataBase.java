@@ -66,9 +66,17 @@ public class DataBase {
         }
   }
 
-  public static void DeleteValues()
+  public static void DeleteValues(int val)
   {
-    
+    String sql = "DELETE FROM budget WHERE Id = (?)";
+
+    try (Connection conn = connect();
+        PreparedStatement pstmt = conn.prepareStatement(sql)){
+        pstmt.setInt(1, val);
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
   }
 
 }
